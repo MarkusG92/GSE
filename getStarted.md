@@ -15,10 +15,10 @@ Thats it, now you're already set up! :)
 
 General Workflow:
 
-git pull
-git add filename
-git commit -m "your commit msg goes here"
-git push
+	git pull
+	git add filename
+	git commit -m "your commit msg goes here"
+	git push
 
 ------------------------------------------------------------------------------
 
