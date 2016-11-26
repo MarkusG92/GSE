@@ -45,7 +45,7 @@ or to add all new files
 	git add *
 
 When to use:
-You have created a new file and want to add it towards the git project
+You have created or edited a file and want to add it towards staging.
 
 ------------------------------------------------------------------------------
 Remove:
