@@ -1,5 +1,13 @@
 This will be a quickstart with all the basic command lines in order to use Git.
 
+Link to the cheat sheet:
+
+https://education.github.com/git-cheat-sheet-education.pdf
+
+Another helpful command is the:
+
+	git help -a
+
 To get Started, Press the green "Clone or download" button 
 Copy the link, which is "https://github.com/MarkusG92/GSE.git"
 
