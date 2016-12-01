@@ -1,4 +1,5 @@
 # GSE
 Global Software Engineering
 
-[[https://github.com/BudickDa/gse_backend|Link to Backend Git]]
+
+[Link](https://github.com/BudickDa/gse_backend) to Backend GIT Project
