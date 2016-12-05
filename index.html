@@ -1,3 +1,88 @@
-<h1> Hello World </h1>
-<h2> This could be our future hosting platform</h2>
-<li><a id = "" href="./html/subpage.html">Link to Subpage</a></li>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>TestApp</title>
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+		<style>
+			#target div {
+				padding: 15px;
+			}
+			.menu-list-item {
+				width: 300px;
+			}
+			.menu-button {
+				width: 100%;
+			}
+			a:link, a:visited {
+				color: black;
+				text-decoration: none;
+				display: inline-block;
+				width: 100%;
+			}
+
+			a:hover, a:active {
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header">
+				<div class="mdl-layout__header mdl-grid">
+					<div class="mdl-layout-spacer"></div>
+					<div class="mdl-layout-title">
+						Home
+					</div>
+					<div class="mdl-layout-spacer"></div>
+				</div>
+			</header>
+			<main class="mdl-layout__content">
+				<div class="page-content mdl-grid">
+					<div class="mdl-layout-spacer"></div>
+					<ul class="menu-list-item mdl-list">
+						<li class="mdl-list__item">
+							<a class="mdl-list__item-secondary-action" href="./html/subpage.html">
+							<button class="menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+								<i class="material-icons">school</i>&nbsp;University
+							</button></a>
+						</li>
+						<li class="mdl-list__item">
+							<a class="mdl-list__item-secondary-action" href="./html/subpage.html">
+							<button class="menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+								<i class="material-icons">check_circle</i>&nbsp;First Steps
+							</button></a>
+						</li>
+						<li class="mdl-list__item">
+							<a class="mdl-list__item-secondary-action" href="./html/subpage.html">
+							<button class="menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+								<i class="material-icons">help</i>&nbsp;FAQ
+							</button></a>
+						</li>
+					</ul>
+					<div class="mdl-layout-spacer"></div>
+				</div>
+			</main>
+			<footer class="mdl-layout__header">
+				<div class="mdl-layout__header-row">
+					<div class="mdl-list">
+						<a class="mdl-list__item-secondary-action" href="./index.html">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+							<i class="material-icons">home</i>&nbsp;Home
+						</button></a>
+					</div>
+
+					<div class="mdl-layout-spacer"></div>
+					<div class="mdl-list">
+						<a class="mdl-list__item-secondary-action" href="./index.html">
+						<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+							<i class="material-icons">account_box</i>&nbsp;Profile
+						</button></a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
