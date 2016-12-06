@@ -3,8 +3,11 @@
 // initial Setup is achieved
 window.onload = function() 
 {
-    loadHeader();
-    loadFooter();
+	$.when( loadHeader(),loadFooter() ).then(function() {
+		$('html, body').css('visibility', 'visible');
+	});
+    //loadHeader();
+    //loadFooter();
 }
 
 function loadHeader(){
