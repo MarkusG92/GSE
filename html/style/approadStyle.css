@@ -1,0 +1,43 @@
+body{
+
+}
+
+/*
+---------------------------------------------
+ header
+---------------------------------------------
+*/
+#header{
+	
+}
+
+#target div {
+				padding: 15px;
+			}
+			.menu-list-item {
+				width: 100%;
+				max-width: 320px;
+			}
+			.menu-button {
+				width: 100%;
+				max-width: 320px;
+			}
+			a:link, a:visited {
+				color: black;
+				text-decoration: none;
+				display: inline-block;
+				width: 100%;
+			}
+
+			a:hover, a:active {
+			}
+
+/* 
+---------------------------------------------
+footer 
+---------------------------------------------
+*/
+
+#footer{
+
+}
