@@ -5,7 +5,6 @@ window.onload = function()
 {
     loadHeader();
     loadFooter();
-    loadHome();
 }
 
 function loadHeader(){
@@ -19,8 +18,4 @@ function loadHeader(){
 
 function loadFooter(){
 	$("#footer").load("../pages/footer.html");	
-}
-
-function loadHome(){
-	$("#indexContent").load("../pages/home.html");		
 }
