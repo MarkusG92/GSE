@@ -32,6 +32,13 @@ body{
 			a:hover, a:active {
 			}
 
+.GSE_hidden{
+	display:none;
+}
+.mdl-list__item-secondary-action{
+	width:100%;
+}
+
 /* 
 ---------------------------------------------
 footer 

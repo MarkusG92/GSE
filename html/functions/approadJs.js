@@ -19,3 +19,9 @@ function loadHeader(){
 function loadFooter(){
 	$("#footer").load("../pages/footer.html");	
 }
+
+function expandFollowingDiv(clickedElement){
+	var elem = $(clickedElement).find("div");
+	// displays or hides the text
+	elem.toggle();
+}
