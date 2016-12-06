@@ -13,11 +13,36 @@
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 	</head>
 <body>
-		<li class="mdl-list__item">
+
+
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<!-- HEADER goes here-->
+			<div id="header" titlename="Welcome"></div>
+
+			<main class="mdl-layout__content">
+				<div class="page-content mdl-grid">
+					<div class="mdl-layout-spacer"></div>
+					<ul class="menu-list-item mdl-list">
+						<li class="mdl-list__item">
+							<h1>Approad</h1>
+						</li>
+						<li class="mdl-list__item">
+							<p>Welcome to Approad. Find the information you need for your studies abroad!</p>
+						</li>
+						<li class="mdl-list__item">
 							<a class="mdl-list__item-secondary-action" href="./html/pages/home.html">
-							<button class="menu-button mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
-								Start Here!
+							<button class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
+								<div>
+									<i class="GSE-icon-content-style material-icons">home</i>
+									<b class="GSE-content-menu-text">Start Here</b>
+								</div>
 							</button></a>
 						</li>
+					</ul>
+					<div class="mdl-layout-spacer"></div>
+				</div>
+			</main>
+			<div id="footer"></div>
+		</div>
 	</body>
 	</html>
