@@ -49,12 +49,13 @@
     <script>
         var map;
         var markers;
-
         $(document).ready(function(){
             /**
             * init openstreetmaps Map in div
             * */
-            map = new OpenLayers.Map("mapdiv");
+            map = new OpenLayers.Map("mapdiv", {
+                maxResolution: 1000
+            });
             map.addLayer(new OpenLayers.Layer.OSM());
             /**
             *  Define center of the map
