@@ -50,7 +50,10 @@
     <script>
         var markers;
         var map;
-        $(function() {
+        /**
+        * Initiate openstreetmaps
+        * */
+        $(document).ready(function(){
             map = new OpenLayers.Map("mapdiv");
             map.addLayer(new OpenLayers.Layer.OSM());
             /**
@@ -59,9 +62,7 @@
             var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
             map.getProjectionObject() // to Spherical Mercator Projection
             );
-
             var zoom = 18;
-
             markers = new OpenLayers.Layer.Markers("Markers");
             map.addLayer(markers);
             /**
@@ -69,35 +70,35 @@
             */
             map.setCenter(lonLat, zoom);
             /**
-            * Get markers from backend
+            * Get markers by querying backend
             */
+            fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
+                method : 'get'
+            }).then(function(response) {
+                return response.json();
+            }).then(function(json) {
+        
+                /**
+                * Iterate through points
+                */
+                json.forEach(function(point) {
+                    /**
+                    * The position is stored as string, so it has to be parsed.
+                    */
+                    var position = JSON.parse(point.position);
+        
+                    /**
+                    * Create a marker (Lontitude, Latitude)
+                    */
+                    var marker = new OpenLayers.LonLat(position[1], position[0]).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                    map.getProjectionObject() // to Spherical Mercator Projection
+                    );
+                    /**
+                    * Set marker to map
+                    */
+                    markers.addMarker(new OpenLayers.Marker(marker));
+                });
+            });       
         });
-        fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
-            method : 'get'
-        }).then(function(response) {
-            return response.json();
-        }).then(function(json) {
-    
-            /**
-            * Iterate through points
-            */
-            json.forEach(function(point) {
-                /**
-                * The position is stored as string, so it has to be parsed.
-                */
-                var position = JSON.parse(point.position);
-    
-                /**
-                * Create a marker (Lontitude, Latitude)
-                */
-                var marker = new OpenLayers.LonLat(position[1], position[0]).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                map.getProjectionObject() // to Spherical Mercator Projection
-                );
-                /**
-                * Set marker to map
-                */
-                markers.addMarker(new OpenLayers.Marker(marker));
-            });
-        });        
     </script>
 </html>
