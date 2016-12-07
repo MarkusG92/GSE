@@ -49,32 +49,6 @@
     <script>
         var map;
         var markers;
-        $(document).ready(function(){
-            /**
-            * init openstreetmaps Map in div
-            * */
-            map = new OpenLayers.Map("mapdiv", {
-                maxResolution: 1000
-            });
-            map.addLayer(new OpenLayers.Layer.OSM());
-            /**
-            *  Define center of the map
-            */
-            var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-            );
-            var zoom = 18;
-            markers = new OpenLayers.Layer.Markers("Markers");
-            map.addLayer(markers);
-            /**
-            * Set map to center
-            */
-            map.setCenter(lonLat, zoom);
-            /**
-            * Call to load the markers of the backend
-            */
-            loadMarkersFromBackend();
-        });
         /**
         * Get markers by querying backend
         */
@@ -106,6 +80,30 @@
                     markers.addMarker(new OpenLayers.Marker(marker));
                 });
             });
-        }    
+        }
+        $(document).ready(function(){
+            /**
+            * init openstreetmaps Map in div
+            * */
+            map = new OpenLayers.Map("mapdiv");
+            map.addLayer(new OpenLayers.Layer.OSM());
+            /**
+            *  Define center of the map
+            */
+            var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+            );
+            var zoom = 18;
+            markers = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(markers);
+            /**
+            * Set map to center
+            */
+            map.setCenter(lonLat, zoom);
+            /**
+            * Call to load the markers of the backend
+            */
+            loadMarkersFromBackend();
+        });
     </script>
 </html>
