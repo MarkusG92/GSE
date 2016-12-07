@@ -49,7 +49,9 @@
     <script>
         var map;
         var markers;
-        $(document).ready(function(){
+        $( window ).load( initMap );
+        
+        function initMap(jQuery){
             /**
             * init openstreetmaps Map in div
             * */
@@ -72,7 +74,7 @@
             * Call to load the markers of the backend
             */
             loadMarkersFromBackend();
-        });
+        };
         /**
         * Get markers by querying backend
         */
@@ -106,4 +108,5 @@
             });
         }
     </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
 </html>
