@@ -11,6 +11,10 @@ visibility:hidden;
 	
 }
 
+.backArrow{
+	cursor: pointer;
+}
+
 #target div {
 	padding: 15px;
 }

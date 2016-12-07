@@ -15,6 +15,11 @@ function loadHeader(){
 	$("#header").load("../pages/header.html",function(){
 		var name = $("#header").attr("titlename");
 		$(".GSE_header").text(name);
+		var backNavigationLink = $("#header").attr("backNavigation");
+		if(backNavigationLink != null){
+			$(".GSE_backArrow").after('<div onclick="window.location=&quot;'+backNavigationLink+'&quot;" class="backArrow";><i class="GSE-icon-header-style material-icons">arrow_back</i></div>');
+
+		}
 	});
 	
 }
