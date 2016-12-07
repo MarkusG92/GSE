@@ -24,7 +24,6 @@
                 width: 100vw;
             }
         </style>
-        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -46,6 +45,7 @@
             <div id="footer"></div>
         </div>
     </body>
+    <script async defer src="http://www.openlayers.org/api/OpenLayers.js"></script>    
     <script>
         var markers;
         var map;
@@ -70,32 +70,32 @@
             /**
             * Get markers from backend
             */
-            fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
-                method : 'get'
-            }).then(function(response) {
-                return response.json();
-            }).then(function(json) {
+        });
+        fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
+            method : 'get'
+        }).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+    
+            /**
+            * Iterate through points
+            */
+            json.forEach(function(point) {
+                /**
+                * The position is stored as string, so it has to be parsed.
+                */
+                var position = JSON.parse(point.position);
     
                 /**
-                * Iterate through points
+                * Create a marker (Lontitude, Latitude)
                 */
-                json.forEach(function(point) {
-                    /**
-                    * The position is stored as string, so it has to be parsed.
-                    */
-                    var position = JSON.parse(point.position);
-    
-                    /**
-                    * Create a marker (Lontitude, Latitude)
-                    */
-                    var marker = new OpenLayers.LonLat(position[1], position[0]).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-                    map.getProjectionObject() // to Spherical Mercator Projection
-                    );
-                    /**
-                    * Set marker to map
-                    */
-                    markers.addMarker(new OpenLayers.Marker(marker));
-                });
+                var marker = new OpenLayers.LonLat(position[1], position[0]).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+                );
+                /**
+                * Set marker to map
+                */
+                markers.addMarker(new OpenLayers.Marker(marker));
             });
         });        
     </script>
