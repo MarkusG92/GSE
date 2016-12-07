@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
         <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
         <script src="../functions/jquery-2.1.4.js"></script>
         <script src="../functions/approadJs.js"></script>
         <link href="../style/approadStyle.css" rel="stylesheet" type="text/css"/>
@@ -45,10 +46,33 @@
             <div id="footer"></div>
         </div>
     </body>
-    <script src="https://www.openlayers.org/api/OpenLayers.js"></script>
     <script>
         var map;
         var markers;
+        $(document).ready(function(){
+            /**
+            * init openstreetmaps Map in div
+            * */
+            map = new OpenLayers.Map("mapdiv");
+            map.addLayer(new OpenLayers.Layer.OSM());
+            /**
+            *  Define center of the map
+            */
+            var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+            );
+            var zoom = 18;
+            markers = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(markers);
+            /**
+            * Set map to center
+            */
+            map.setCenter(lonLat, zoom);
+            /**
+            * Call to load the markers of the backend
+            */
+            loadMarkersFromBackend();
+        });
         /**
         * Get markers by querying backend
         */
@@ -81,29 +105,5 @@
                 });
             });
         }
-        $(document).ready(function(){
-            /**
-            * init openstreetmaps Map in div
-            * */
-            map = new OpenLayers.Map("mapdiv");
-            map.addLayer(new OpenLayers.Layer.OSM());
-            /**
-            *  Define center of the map
-            */
-            var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
-            map.getProjectionObject() // to Spherical Mercator Projection
-            );
-            var zoom = 18;
-            markers = new OpenLayers.Layer.Markers("Markers");
-            map.addLayer(markers);
-            /**
-            * Set map to center
-            */
-            map.setCenter(lonLat, zoom);
-            /**
-            * Call to load the markers of the backend
-            */
-            loadMarkersFromBackend();
-        });
     </script>
 </html>
