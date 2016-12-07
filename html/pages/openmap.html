@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Approad</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+        <script src="../functions/jquery-2.1.4.js"></script>
+        <script src="../functions/approadJs.js"></script>
+        <link href="../style/approadStyle.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <link rel="shortcut icon" type="image/x-icon" href="./../../favicon.ico">
+        <link rel="shortcut icon" href="./../../favicon.ico">
+        <link rel="icon" type="image/png" href="./../../favicon.png" sizes="32x32">
+        <link rel="apple-touch-icon" sizes="180x180" href="./../../apple-touch-icon.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
+        <style>
+            #mapdiv {
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+        <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <!-- HEADER goes here-->
+            <div id="header" titlename="Map" backNavigation="home.html"></div>
+            <main class="mdl-layout__content">
+                <a class="mdl-list__item-secondary-action" href="./map.html">
+                    <div class="mdl-layout-spacer"></div>
+                    <button class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <div>
+                            <i class="GSE-icon-content-style material-icons">map</i>
+                            <b class="GSE-content-menu-text">Switch to GoogleMaps!</b>
+                        </div>
+                    </button>
+                    <div class="mdl-layout-spacer"></div>
+                </a>
+                <div id="mapdiv"></div>
+            </main>
+            <div id="footer"></div>
+        </div>
+    </body>
+    <script>
+        var markers;
+        var map;
+        $(function() {
+            map = new OpenLayers.Map("mapdiv");
+            map.addLayer(new OpenLayers.Layer.OSM());
+            /**
+            *  Define center of the map
+            */
+            var lonLat = new OpenLayers.LonLat(11.0933535, 49.4524856).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+            map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+            var zoom = 18;
+
+            markers = new OpenLayers.Layer.Markers("Markers");
+            map.addLayer(markers);
+            /**
+            * Set map to center
+            */
+            map.setCenter(lonLat, zoom);
+        });
+        fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
+            method : 'get'
+        }).then(function(response) {
+            return response.json();
+        }).then(function(json) {
+
+            /**
+            * Iterate through points
+            */
+            json.forEach(function(point) {
+                /**
+                * The position is stored as string, so it has to be parsed.
+                */
+                var position = JSON.parse(point.position);
+
+                /**
+                * Create a marker (Lontitude, Latitude)
+                */
+                var marker = new OpenLayers.LonLat(position[1], position[0]).transform(new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+                );
+                /**
+                * Set marker to map
+                */
+                markers.addMarker(new OpenLayers.Marker(marker));
+            });
+        });
+    </script>
+</html>
