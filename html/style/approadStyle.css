@@ -73,15 +73,15 @@ ul > li:first-child {
    	left: 75px;
 }
 .GSE-footer{
-	height: 88px;
+	height: 60px;
 }
 .GSE-footer-menu{
 	height: 76px;
-	top: 10px;
+	bottom: 20px;
 }
 .GSE-footer-menu-icon{
              font-size: 50px;  /* Preferred icon size */
-}			
+}
 .GSE-menu-button{
 	text-align: left;
 }
