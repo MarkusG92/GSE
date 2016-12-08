@@ -8,6 +8,15 @@
 	
 }
 
+/*FAQ List*/
+.faq.mdl-list{
+	max-width: 650px;
+	margin: 0 auto;
+}
+.faq .mdl-list__item-secondary-info{
+	text-align: right;
+}
+
 .backArrow{
 	cursor: pointer;
 }
@@ -121,3 +130,5 @@ footer
 #footer{
 
 }
+
+

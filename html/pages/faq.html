@@ -1,49 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Approad</title>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
-		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-		<script src="../functions/jquery-2.1.4.js"></script>
-		<script src="../functions/approadJs.js"></script>
-		<link href="../style/approadStyle.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approad</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="../functions/jquery-2.1.4.js"></script>
+    <script src="../functions/approadJs.js"></script>
+    <link href="../style/approadStyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 
-		<link rel="shortcut icon" type="image/x-icon" href="./../../favicon.ico">
-		<link rel="shortcut icon" href="./../../favicon.ico">
-		<link rel="icon" type="image/png" href="./../../favicon.png" sizes="32x32">
-		<link rel="apple-touch-icon" sizes="180x180" href="./../../apple-touch-icon.png">
-		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
-	</head>
+    <link rel="shortcut icon" type="image/x-icon" href="./../../favicon.ico">
+    <link rel="shortcut icon" href="./../../favicon.ico">
+    <link rel="icon" type="image/png" href="./../../favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="./../../apple-touch-icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
+</head>
 <body>
 
 
-		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-			<!-- HEADER goes here-->
-			<div id="header" titlename="FAQ" backNavigation="home.html"></div>
-			<main class="mdl-layout__content">
-				<div class="page-content mdl-grid">
-					<div class="mdl-layout-spacer"></div>
-					<ul class="menu-list-item mdl-list">
-						<li class="mdl-list__item">
-							<a class="mdl-list__item-secondary-action" href="">
-							<button class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
-								<div>
-									<i class="GSE-icon-content-style material-icons">info i</i>
-									<b class="GSE-content-menu-text">First Question and so on</b>
-								</div>
-							</button></a>
-						</li>
-					</ul>
-					<div class="mdl-layout-spacer"></div>
-				</div>
-			</main>
-			<div id="footer"></div>
-		</div>
-		<div class="modal"><!-- Place at bottom of page --></div>
-	</body>
-	</html>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!-- HEADER goes here-->
+    <div id="header" titlename="FAQ" backNavigation="home.html"></div>
+    <main class="mdl-layout__content">
+        <div class="mdl-layout-spacer"></div>
+        <div id="target" class="mdl-list faq"></div>
+        <div class="mdl-layout-spacer"></div>
+    </main>
+    <div id="footer"></div>
+</div>
+<div class="modal"><!-- Place at bottom of page --></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script>
+<script>
+    var target = document.getElementById('target');
+    fetch('https://gsebackendapi.azurewebsites.net/Api/FAQs', {
+        method: 'get'
+    }).then(function(response) {
+        return response.json();
+    }).then(function(json) {
+        var html = '';
+        json.forEach(function(item) {
+            html += `
+                    <li class="mdl-list__item mdl-list__item--three-line">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons mdl-list__item-avatar">info i</i>
+                          <span>${item.question}</span>
+                          <span class="mdl-list__item-text-body">
+                                ${item.answer}
+                              <span class="mdl-list__item-secondary-info">
+                                <a href="${item.link}" target="_blank">Source</a>
+                              </span>
+                          </span>
+                        </span>
+                      </li>
+                `;
+        });
+        target.innerHTML = html;
+    }).catch(function(err) {
+        console.error(err);
+    });
+</script>
+</body>
+</html>
