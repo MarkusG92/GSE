@@ -1,6 +1,3 @@
-body{
-visibility:hidden;
-}
 
 /*
 ---------------------------------------------
@@ -9,6 +6,15 @@ visibility:hidden;
 */
 #header{
 	
+}
+
+/*FAQ List*/
+.faq.mdl-list{
+	max-width: 650px;
+	margin: 0 auto;
+}
+.faq .mdl-list__item-secondary-info{
+	text-align: right;
 }
 
 .backArrow{
@@ -93,6 +99,28 @@ ul > li:first-child {
 	width:100%;
 }
 
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    2;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../pages/data/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body .modal {
+    display: block;
+}
+
+
 /* 
 ---------------------------------------------
 footer 
@@ -102,3 +130,5 @@ footer
 #footer{
 
 }
+
+
