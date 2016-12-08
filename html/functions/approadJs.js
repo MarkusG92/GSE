@@ -3,12 +3,17 @@
 // initial Setup is achieved
 window.onload = function() 
 {
-	$.when( loadHeader(),loadFooter() ).then(function() {
-		$('html, body').css('visibility', 'visible');
-	});
-    //loadHeader();
-    //loadFooter();
+    loadHeader();
+    loadFooter();
+    // removes the loading animation once the doc is ready
+    $( document ).ready(function() {
+        $('.modal').css({'display' : 'none'});
+    });
+ 	
+    
 }
+
+
 
 function loadHeader(){
 	// waits till the page is loaded and then sets the header
@@ -29,7 +34,8 @@ function loadFooter(){
 }
 
 function expandFollowingDiv(clickedElement){
-	var elem = $(clickedElement).find("div");
+	//alert("hi");
+	var elem = $(clickedElement).next();
 	// displays or hides the text
-	elem.toggle();
+	elem.slideToggle("ease");
 }

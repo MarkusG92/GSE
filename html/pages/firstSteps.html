@@ -43,6 +43,12 @@
 			<!-- FOOTER ends here-->
 		</div>
 		<script>
+		$body = $("body");
+		$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }    
+});
+
         fetch('https://gsebackendapi.azurewebsites.net/Api/FirstSteps', {
             method: 'get'
         }).then(function(response) {
@@ -57,11 +63,13 @@
             json.forEach(function(item) {
                 html += `
                 <li class="mdl-list__item">
-					<a class="mdl-list__item-secondary-action" onclick="expandFollowingDiv(this)">
-					<button class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
+					<a class="mdl-list__item-secondary-action">
+					<div onclick="expandFollowingDiv(this)">
+					<button  class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
 								${item.information}
 					</button>
-					<div class="GSE_hidden">
+					</div>
+					<div class="GSE_hidden GSE-text-color">
 					${item.link}
 					</div></a>
 						</li>
@@ -76,5 +84,6 @@
             console.error(err);
         });
     </script>
+    <div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 	</html>
