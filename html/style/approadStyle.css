@@ -90,6 +90,7 @@ ul > li:first-child {
 }
 .GSE-menu-button{
 	text-align: left;
+	height:auto;
 }
 
 .GSE_hidden{
