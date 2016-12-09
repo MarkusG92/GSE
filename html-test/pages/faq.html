@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approad</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <script src="../functions/jquery-2.1.4.js"></script>
+    <script src="../functions/approadJs.js"></script>
+    <link href="../style/approadStyle.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="./../../favicon.ico">
+    <link rel="shortcut icon" href="./../../favicon.ico">
+    <link rel="icon" type="image/png" href="./../../favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="./../../apple-touch-icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
+</head>
+<body>
+
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <!-- HEADER goes here-->
+    <div id="header" titlename="FAQ" backNavigation="home.html"></div>
+    <main class="mdl-layout__content">
+        <div class="mdl-layout-spacer"></div>
+        <div id="target" class="mdl-list faq"></div>
+        <div class="mdl-layout-spacer"></div>
+    </main>
+    <div id="footer"></div>
+</div>
+<div class="modal"><!-- Place at bottom of page --></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script>
+<script>
+    // Get target element from DOM
+    var target = document.getElementById('target');
+
+    //Fetch data from API-route
+    fetch('https://gsebackendapi.azurewebsites.net/Api/FAQs', {
+        //choose http method
+        method: 'get'
+    }).then(function(response) {
+        //Promise returns response
+        //get json from response
+        return response.json();
+    }).then(function(json) {
+        //promise returns data as JSON
+        var html = '';
+        //iterate through arry
+        json.forEach(function(item) {
+            //create html from data
+            html += `
+                    <li class="mdl-list__item mdl-list__item--three-line">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons mdl-list__item-avatar">info i</i>
+                          <span>${item.question}</span>
+                          <span class="mdl-list__item-text-body">
+                                ${item.answer}
+                              <span class="mdl-list__item-secondary-info">
+                                <a href="${item.link}" target="_blank">Source</a>
+                              </span>
+                          </span>
+                        </span>
+                      </li>
+                `;
+        });
+
+        //writing created html to DOM
+        target.innerHTML = html;
+    }).catch(function(err) {
+        //if error happen they will be printed to the console
+        console.error(err);
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+body{
+visibility:hidden;
+}
+
+/*
+---------------------------------------------
+ header
+---------------------------------------------
+*/
+#header{
+	
+}
+
+.backArrow{
+	cursor: pointer;
+}
+
+#target div {
+	padding: 15px;
+}
+.menu-list-item {
+	width: 100%;
+	max-width: 320px;
+}
+.menu-button {
+	width: 100%;
+	max-width: 320px;
+}
+a:link, a:visited {
+	color: black;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+}
+.GSE-background-style {
+	background-color: #00529E; /* TH Nbg Primary Color*/
+}
+.GSE-icon-content-style {
+	color: #49A9FF; /* TH Nbg Actions color */
+	font-size: 32px;
+}
+
+.GSE-icon-footer-menu {
+	color: #F5F5FF;
+}
+.GSE-icon-footer-menu-inactive {
+	color: #707070;
+         }
+.GSE-text-footer-menu-inactive {
+	color: #707070;
+}
+.GSE-text-color {
+	/*color:rgb(63,81,181)*/
+	color: #2D2D2D;
+}
+.GSE-text-footer-menu {
+	/*color:rgb(63,81,181)*/
+	color: #F5F5FF;
+	font-size: 12px;
+}
+.GSE-background {
+	background-color: #F5F5FF;
+}
+ul > li:first-child {
+	border-top: solid 2px darkgrey;
+}
+
+         ul > li {
+	border-bottom: solid 2px darkgrey;
+}
+.GSE-content-menu-text{
+   	position: absolute;
+   	left: 75px;
+}
+.GSE-footer{
+	height: 60px;
+}
+.GSE-footer-menu{
+	height: 76px;
+	bottom: 20px;
+}
+.GSE-footer-menu-icon{
+             font-size: 50px;  /* Preferred icon size */
+}
+.GSE-menu-button{
+	text-align: left;
+}
+
+.GSE_hidden{
+	display:none;
+}
+.mdl-list__item-secondary-action{
+	width:100%;
+}
+
+/* 
+---------------------------------------------
+footer 
+---------------------------------------------
+*/
+
+#footer{
+
+}

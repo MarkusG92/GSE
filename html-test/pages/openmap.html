@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Approad</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+        <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    	<link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
+    	<!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    	<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+    	<script src="https://openlayers.org/en/v3.19.1/build/ol.js"></script>
+        <script src="../functions/jquery-2.1.4.js"></script>
+        <script src="../functions/approadJs.js"></script>
+        <link href="../style/approadStyle.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+        <link rel="shortcut icon" type="image/x-icon" href="./../../favicon.ico">
+        <link rel="shortcut icon" href="./../../favicon.ico">
+        <link rel="icon" type="image/png" href="./../../favicon.png" sizes="32x32">
+        <link rel="apple-touch-icon" sizes="180x180" href="./../../apple-touch-icon.png">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
+        <style>
+            #map {
+                height: 100vh;
+                width: 100vw;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <!-- HEADER goes here-->
+            <div id="header" titlename="Map" backNavigation="home.html"></div>
+            <main class="mdl-layout__content">
+                <a class="mdl-list__item-secondary-action" href="./map.html">
+                    <div class="mdl-layout-spacer"></div>
+                    <button class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
+                        <div>
+                            <i class="GSE-icon-content-style material-icons">map</i>
+                            <b class="GSE-content-menu-text">Switch to GoogleMaps!</b>
+                        </div>
+                    </button>
+                    <div class="mdl-layout-spacer"></div>
+                </a>
+                <div id="map" class="map"></div>
+            </main>
+            <div id="footer"></div>
+        </div>
+    </body>
+    <script>
+
+    var markerPositions=[];
+    var count = 0;
+    var iconFeatures=[];
+
+    fetch('https://gsebackendapi.azurewebsites.net/Api/POIs', {
+      method: 'get'
+    }).then(function(response) {
+      return response.json();
+    }).then(function(json) {
+      console.log(json);
+      json.forEach(function(point) {
+        var position = JSON.parse(point.position);
+        markerPositions.push(position);
+        count++;
+      });
+      displayMap();
+    });
+
+    function displayMap(){
+        var iconStyle = new ol.style.Style({
+        image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            opacity: 0.75,
+            src: 'data/icon.png'
+        }))
+        });
+    
+        for(var i = 0; i<count; i++)
+        {
+            //alert(markerPositions[i]);
+            var iconFeature = new ol.Feature({
+                geometry: new ol.geom.Point(ol.proj.fromLonLat([markerPositions[i][1],markerPositions[i][0]])),
+                
+                name: 'POI',
+                population: 4000,
+                rainfall: 500
+            });
+        
+            iconFeature.setStyle(iconStyle);
+        
+            iconFeatures.push(iconFeature); 
+        }
+    
+        var vectorSource = new ol.source.Vector({
+        features: iconFeatures
+        });
+        
+        var vectorLayer = new ol.layer.Vector({
+        source: vectorSource
+        });
+        
+        var rasterLayer = new ol.layer.Tile({
+        source: new ol.source.TileJSON({
+            url: 'https://api.tiles.mapbox.com/v3/mapbox.geography-class.jsonp'
+        })
+        });
+        
+        var map = new ol.Map({
+        layers: [          new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }), rasterLayer, vectorLayer],
+        target: 'map',
+        view: new ol.View({
+            center: ol.proj.fromLonLat([11.0933535, 49.4524856]),
+            zoom: 18
+        })
+        });
+    }
+    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/modernizr/modernizr-2.8.3.js"></script>
+    <div class="modal"><!-- Place at bottom of page --></div>
+</html>
