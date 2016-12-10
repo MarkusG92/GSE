@@ -1,0 +1,140 @@
+
+/*
+---------------------------------------------
+ header
+---------------------------------------------
+*/
+#header{
+	
+}
+
+/*FAQ List*/
+.faq.mdl-list{
+	max-width: 650px;
+	margin: 0 auto;
+}
+.faq .mdl-list__item-secondary-info{
+	text-align: right;
+}
+
+.backArrow{
+	cursor: pointer;
+}
+
+#target div {
+	padding: 15px;
+}
+.menu-list-item {
+	width: 100%;
+	max-width: 320px;
+}
+.menu-button {
+	width: 100%;
+	max-width: 320px;
+}
+a:link, a:visited {
+	color: black;
+	text-decoration: none;
+	display: inline-block;
+	width: 100%;
+}
+.GSE-background-style {
+	background-color: #046847; /* NPMex Primary Color*/
+}
+.GSE-icon-content-style {
+	color: #CE1126; /* NPMex Actions Color*/
+	font-size: 32px;
+}
+
+.GSE-icon-footer-menu {
+	color: #F5F5FF;
+}
+.GSE-icon-footer-menu-inactive {
+	color: #707070;
+         }
+.GSE-text-footer-menu-inactive {
+	color: #707070;
+}
+.GSE-text-color {
+	/*color:rgb(63,81,181)*/
+	color: #2D2D2D;
+}
+
+.GSE-background {
+	background-color: #F5F5FF;
+}
+ul > li:first-child {
+	border-top: solid 2px darkgrey;
+}
+
+         ul > li {
+	border-bottom: solid 2px darkgrey;
+}
+.GSE-content-menu-text{
+   	position: absolute;
+   	left: 75px;
+}
+.GSE-footer{
+	height: 8px;
+    overflow:hidden;    
+}
+.GSE-footer-menu{
+	height: 70px;
+	bottom: 40px;
+}
+.GSE-text-footer-menu {
+	/*color:rgb(63,81,181)*/
+	color: #F5F5FF;
+	font-size: 12px;
+    bottom: 40px;
+}
+.GSE-footer-menu-div-icon{
+
+}
+.GSE-footer-menu-icon{
+             font-size: 42px;  /* Preferred icon size */
+}
+.GSE-menu-button{
+	text-align: left;
+	height:auto;
+}
+
+.GSE_hidden{
+	display:none;
+}
+.mdl-list__item-secondary-action{
+	width:100%;
+}
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    2;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../pages/data/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body .modal {
+    display: block;
+}
+
+
+/* 
+---------------------------------------------
+footer 
+---------------------------------------------
+*/
+
+#footer{
+
+}
+
+
