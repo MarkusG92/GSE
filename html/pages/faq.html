@@ -19,7 +19,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
 </head>
-<body>
+<body id ="faq">
 
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -35,46 +35,5 @@
 <div class="modal"><!-- Place at bottom of page --></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-promise/4.0.5/es6-promise.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js"></script>
-<script>
-    // Get target element from DOM
-    var target = document.getElementById('target');
-
-    //Fetch data from API-route
-    fetch('https://gsebackendapi.azurewebsites.net/Api/FAQs', {
-        //choose http method
-        method: 'get'
-    }).then(function(response) {
-        //Promise returns response
-        //get json from response
-        return response.json();
-    }).then(function(json) {
-        //promise returns data as JSON
-        var html = '';
-        //iterate through arry
-        json.forEach(function(item) {
-            //create html from data
-            html += `
-                    <li class="mdl-list__item mdl-list__item--three-line">
-                        <span class="mdl-list__item-primary-content">
-                          <i class="material-icons mdl-list__item-avatar">info i</i>
-                          <span>${item.question}</span>
-                          <span class="mdl-list__item-text-body">
-                                ${item.answer}
-                              <span class="mdl-list__item-secondary-info">
-                                <a href="${item.link}" target="_blank">Source</a>
-                              </span>
-                          </span>
-                        </span>
-                      </li>
-                `;
-        });
-
-        //writing created html to DOM
-        target.innerHTML = html;
-    }).catch(function(err) {
-        //if error happen they will be printed to the console
-        console.error(err);
-    });
-</script>
 </body>
 </html>
