@@ -1,6 +1,3 @@
-body{
-visibility:hidden;
-}
 
 /*
 ---------------------------------------------
@@ -9,6 +6,15 @@ visibility:hidden;
 */
 #header{
 	
+}
+
+/*FAQ List*/
+.faq.mdl-list{
+	max-width: 650px;
+	margin: 0 auto;
+}
+.faq .mdl-list__item-secondary-info{
+	text-align: right;
 }
 
 .backArrow{
@@ -33,10 +39,10 @@ a:link, a:visited {
 	width: 100%;
 }
 .GSE-background-style {
-	background-color: #00529E; /* TH Nbg Primary Color*/
+	background-color: #046847; /* NPMex Primary Color*/
 }
 .GSE-icon-content-style {
-	color: #49A9FF; /* TH Nbg Actions color */
+	color: #CE1126; /* NPMex Actions Color*/
 	font-size: 32px;
 }
 
@@ -53,11 +59,7 @@ a:link, a:visited {
 	/*color:rgb(63,81,181)*/
 	color: #2D2D2D;
 }
-.GSE-text-footer-menu {
-	/*color:rgb(63,81,181)*/
-	color: #F5F5FF;
-	font-size: 12px;
-}
+
 .GSE-background {
 	background-color: #F5F5FF;
 }
@@ -73,17 +75,28 @@ ul > li:first-child {
    	left: 75px;
 }
 .GSE-footer{
-	height: 60px;
+	height: 8px;
+    overflow:hidden;    
 }
 .GSE-footer-menu{
-	height: 76px;
-	bottom: 20px;
+	height: 70px;
+	bottom: 40px;
+}
+.GSE-text-footer-menu {
+	/*color:rgb(63,81,181)*/
+	color: #F5F5FF;
+	font-size: 12px;
+    bottom: 40px;
+}
+.GSE-footer-menu-div-icon{
+
 }
 .GSE-footer-menu-icon{
-             font-size: 50px;  /* Preferred icon size */
+             font-size: 42px;  /* Preferred icon size */
 }
 .GSE-menu-button{
 	text-align: left;
+	height:auto;
 }
 
 .GSE_hidden{
@@ -92,6 +105,27 @@ ul > li:first-child {
 .mdl-list__item-secondary-action{
 	width:100%;
 }
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    2;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('../pages/data/ajax-loader.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body .modal {
+    display: block;
+}
+
 
 /* 
 ---------------------------------------------
@@ -102,3 +136,5 @@ footer
 #footer{
 
 }
+
+

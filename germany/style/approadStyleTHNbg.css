@@ -5,7 +5,7 @@
 ---------------------------------------------
 */
 #header{
-	z-index:3;
+	
 }
 
 /*FAQ List*/
@@ -39,10 +39,10 @@ a:link, a:visited {
 	width: 100%;
 }
 .GSE-background-style {
-	background-color: #303F9F; /* Default Primary Color */
+	background-color: #00529E; /* TH Nbg Primary Color*/
 }
 .GSE-icon-content-style {
-	color: #448AFF; /* Default Actions Color */
+	color: #49A9FF; /* TH Nbg Actions color */
 	font-size: 32px;
 }
 
@@ -59,11 +59,7 @@ a:link, a:visited {
 	/*color:rgb(63,81,181)*/
 	color: #2D2D2D;
 }
-.GSE-text-footer-menu {
-	/*color:rgb(63,81,181)*/
-	color: #F5F5FF;
-	font-size: 12px;
-}
+
 .GSE-background {
 	background-color: #F5F5FF;
 }
@@ -79,14 +75,24 @@ ul > li:first-child {
    	left: 75px;
 }
 .GSE-footer{
-	height: 60px;
+	height: 8px;
+    overflow:hidden;    
 }
 .GSE-footer-menu{
-	height: 76px;
-	bottom: 20px;
+	height: 70px;
+	bottom: 40px;
+}
+.GSE-text-footer-menu {
+	/*color:rgb(63,81,181)*/
+	color: #F5F5FF;
+	font-size: 12px;
+    bottom: 40px;
+}
+.GSE-footer-menu-div-icon{
+
 }
 .GSE-footer-menu-icon{
-             font-size: 50px;  /* Preferred icon size */
+             font-size: 42px;  /* Preferred icon size */
 }
 .GSE-menu-button{
 	text-align: left;
@@ -99,7 +105,6 @@ ul > li:first-child {
 .mdl-list__item-secondary-action{
 	width:100%;
 }
-
 
 .modal {
     display:    none;
@@ -115,15 +120,9 @@ ul > li:first-child {
                 no-repeat;
 }
 
-/* When the body has the loading class, we turn
-   the scrollbar off with overflow:hidden */
-body.loading {
-    overflow: hidden;   
-}
-
 /* Anytime the body has the loading class, our
    modal element will be visible */
-body.loading .modal {
+body .modal {
     display: block;
 }
 
@@ -135,7 +134,7 @@ footer
 */
 
 #footer{
-	z-index:3;
+
 }
 
 
