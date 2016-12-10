@@ -26,9 +26,6 @@ window.onload = function()
     $( document ).ready(function() {
         //$('.modal').css({'display' : 'none'});
     });
-    
-    document.body.requestFullscreen();
-
 }
 
 function removeLoading(){
