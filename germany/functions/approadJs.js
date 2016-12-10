@@ -1,7 +1,8 @@
 // sets up the functions and makes them ready to use in the other js files
 
 
-
+window.addEventListener("load", function(){ if(!window.pageYOffset){ hideAddressBar(); } } );
+window.addEventListener("orientationchange", hideAddressBar );
 
 // initial Setup is achieved
 window.onload = function() 
@@ -29,9 +30,6 @@ window.onload = function()
     $( document ).ready(function() {
         //$('.modal').css({'display' : 'none'});
     });
-    hideAddressBar();
-    window.addEventListener("orientationchange", hideAddressBar );
-    
 }
 
 function removeLoading(){
@@ -64,18 +62,15 @@ function loadFooter(){
 
 function hideAddressBar()
 {
-    if(!window.location.hash)
-    { 
-        if(document.height <= window.outerHeight + 10)
-        {
-            document.body.style.height = (window.outerHeight + 50) +'px';
-            setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
-        }
-        else
-        {
-            setTimeout( function(){ window.scrollTo(0, 1); }, 0 ); 
-        }
-    }
+  if(!window.location.hash)
+  {
+      if(document.height < window.outerHeight)
+      {
+          document.body.style.height = (window.outerHeight + 50) + 'px';
+      }
+
+      setTimeout( function(){ window.scrollTo(0, 1); }, 50 );
+  }
 }
 
 function expandFollowingDiv(clickedElement){
