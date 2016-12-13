@@ -19,7 +19,7 @@
 		<meta name="msapplication-TileColor" content="#ffffff">
 		<meta name="msapplication-TileImage" content="./../../mstile-144x144.png">
 	</head>
-<body>
+<body id="firstSteps">
 
 
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -42,48 +42,7 @@
 			<div id="footer"></div>
 			<!-- FOOTER ends here-->
 		</div>
-		<script>
-		$body = $("body");
-		$(document).on({
-    ajaxStart: function() { $body.addClass("loading");    },
-     ajaxStop: function() { $body.removeClass("loading"); }    
-});
-
-        fetch('https://gsebackendapi.azurewebsites.net/Api/FirstSteps', {
-            method: 'get'
-        }).then(function(response) {
-            return response.json();
-        }).then(function(json) {
-            //print result to console
-            console.log(json);
-            //get target element
-            const target = document.getElementById('targetContainer');
-            var html = '';
-            //iterate through json array
-            json.forEach(function(item) {
-                html += `
-                <li class="mdl-list__item">
-					<a class="mdl-list__item-secondary-action">
-					<div onclick="expandFollowingDiv(this)">
-					<button  class="GSE-menu-button GSE-text-color menu-button mdl-button mdl-js-button mdl-js-ripple-effect">
-								${item.description}
-					</button>
-					</div>
-					<div class="GSE_hidden GSE-text-color">
-					${item.information}
-					</div></a>
-						</li>
-                `;
-            });
-            //print created html to console
-            console.log(html);
-            //write html to element
-            target.innerHTML = html;
-        }).catch(function(err) {
-            //print error to console
-            console.error(err);
-        });
-    </script>
+	
     <div class="modal"><!-- Place at bottom of page --></div>
 	</body>
 	</html>

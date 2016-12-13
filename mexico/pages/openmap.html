@@ -50,7 +50,7 @@
         </div>
     </body>
     <script>
-
+    startLoading();
     var markerPositions=[];
     var count = 0;
     var iconFeatures=[];
@@ -67,6 +67,8 @@
         count++;
       });
       displayMap();
+    }).then(function(){
+        removeLoading();
     });
 
     function displayMap(){

@@ -52,6 +52,7 @@
 </script>
 <script>
   var map;
+  startLoading();
 
   /**
    * Initiate google maps
@@ -88,7 +89,10 @@
        */
       marker.setMap(map);
     });
+  }).then(function(){
+    removeLoading();
   });
+
 
 </script>
 <div class="modal"><!-- Place at bottom of page --></div>
